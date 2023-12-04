@@ -1,0 +1,157 @@
+* {
+	padding: 0;
+	margin: 0;
+	border: 0;
+	outline: 0;
+	text-decoration: none;
+	list-style: none;
+	box-sizing: border-box;
+	/* border: 1px solid red; */
+}
+
+:root {
+	--primaryColor: #4db5ff;
+	--primaryColorVarient: rgba(77, 181, 255, 0.4);
+	--bgColor: #1f1f38;
+	--bgColorVariant: #2c2c6c;
+	--whiteColor: #fff;
+	--lightColor: rgba(255, 255, 255, 0.6);
+	--blackColor: #000;
+	--transition: all 300ms ease;
+	--h1Font: 2.5rem;
+	--h2Font: 1.6rem;
+	--h3Font: 0.95rem;
+	--smallFont: 0.75rem;
+	--linkFont: 1rem;
+	--spanFont: 1.4rem;
+}
+
+body {
+	font-family: "Poppins", sans-serif;
+	background-color: var(--bgColor);
+	color: var(--whiteColor);
+	line-height: 1.7;
+	background-image: url("../src/assets/bg-texture.png");
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+	display: none;
+}
+
+/* ===================GENERAL STYLES=================== */
+
+a,
+p {
+	font-size: var(--linkFont);
+}
+
+h1,
+h2,
+h3 {
+	font-family: "Outfit", sans-serif;
+}
+
+h1 {
+	font-size: var(--h1Font);
+}
+h2 {
+	font-size: var(--h2Font);
+}
+
+h3 {
+	font-size: var(--h3Font);
+}
+small {
+	font-size: var(--smallFont);
+}
+span {
+	font-size: var(--spanFont);
+}
+
+.cta {
+	width: fit-content;
+	display: inline-block;
+	padding: 0.75rem 1.2rem;
+	background-color: var(--primaryColor);
+	color: var(--bgColor);
+	transition: var(--transition);
+	border-radius: 0.4rem;
+	cursor: pointer;
+}
+
+.cta-outline {
+	width: fit-content;
+	display: inline-block;
+	padding: 0.75rem 1.2rem;
+	transition: var(--transition);
+	border-radius: 0.4rem;
+	cursor: pointer;
+	background: transparent;
+	border: 1px solid var(--primaryColor);
+	color: var(--primaryColor);
+}
+
+.cta:hover,
+.cta-outline:hover {
+	background-color: var(--whiteColor);
+	color: var(--bgColor);
+	border-color: transparent;
+}
+
+img {
+	width: 100%;
+	display: block;
+	object-fit: cover;
+}
+
+section {
+	margin: 8rem auto 0 auto;
+	width: 75%;
+}
+.heading {
+	text-align: center;
+	margin-bottom: 2rem;
+}
+
+.flex-ic {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+.flex {
+	display: flex;
+	gap: 1rem;
+}
+
+@keyframes scale {
+	0% {
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(0.8);
+	}
+	100% {
+		transform: scale(1);
+	}
+}
+
+/* ===================MEDIA QUERY(MEDIUM DEVICES)=================== */
+
+@media screen and (max-width: 1024px) {
+	section {
+		margin: 6rem auto 0 auto;
+		width: 85%;
+	}
+}
+
+/* ===================MEDIA QUERY(SMALL DEVICES)=================== */
+
+@media screen and (max-width: 600px) {
+	section {
+		width: 90%;
+	}
+}
