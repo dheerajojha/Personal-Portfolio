@@ -12,10 +12,13 @@ import avtar3 from "../assets/avatar3.jpg";
 import { FaLinkedin } from "react-icons/fa6";
 import { FaInstagramSquare } from "react-icons/fa";
 import { FaSquareDribbble } from "react-icons/fa6";
-import { FaArrowTrendUp } from "react-icons/fa6";
-import { TiTick } from "react-icons/ti";
+import { FaPeopleCarryBox } from "react-icons/fa6";
+import { BsCheck2Circle } from "react-icons/bs";
 import { CiMail } from "react-icons/ci";
 import { FaWhatsapp } from "react-icons/fa6";
+import { MdOutlineWork } from "react-icons/md";
+import { GoProjectRoadmap } from "react-icons/go";
+import { BsFillPatchCheckFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import port1 from "../assets/portfolio1.jpg";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -27,10 +30,10 @@ import { toast } from "react-toastify";
 
 const Home = () => {
 	// scroll to bottom function
-	const contactRef = useRef(null)
+	const contactRef = useRef(null);
 	const scrollToBottom = () => {
-		contactRef.current?.scrollIntoView({ behavior: "smooth" })
-	}
+		contactRef.current?.scrollIntoView({ behavior: "smooth" });
+	};
 
 	// calling email handler
 	const formRef = useRef();
@@ -54,17 +57,17 @@ const Home = () => {
 	};
 	const aboutData = [
 		{
-			icons: <FaArrowTrendUp />,
+			icons: <MdOutlineWork />,
 			title: "Experience",
 			subTitle: "2+ Years Working",
 		},
 		{
-			icons: <FaArrowTrendUp />,
+			icons: <FaPeopleCarryBox />,
 			title: "Clients",
 			subTitle: "10+ Worldwide",
 		},
 		{
-			icons: <FaArrowTrendUp />,
+			icons: <GoProjectRoadmap />,
 			title: "Projects",
 			subTitle: "20+ Completed",
 		},
@@ -73,44 +76,44 @@ const Home = () => {
 	const experienceData = {
 		frontend: [
 			{
-				icons: <TiTick />,
+				icons: <BsFillPatchCheckFill />,
 				title: "HTML",
 				subTitle: "Experienced",
 			},
 			{
-				icons: <TiTick />,
+				icons: <BsFillPatchCheckFill />,
 				title: "CSS",
 				subTitle: "Experienced",
 			},
 			{
-				icons: <TiTick />,
+				icons: <BsFillPatchCheckFill />,
 				title: "JAVASCRIPT",
 				subTitle: "Experienced",
 			},
 			{
-				icons: <TiTick />,
+				icons: <BsFillPatchCheckFill />,
 				title: "BOOTSTRAP",
 				subTitle: "Experienced",
 			},
 			{
-				icons: <TiTick />,
+				icons: <BsFillPatchCheckFill />,
 				title: "REACTJS",
 				subTitle: "Experienced",
 			},
 		],
 		backend: [
 			{
-				icons: <TiTick />,
+				icons: <BsFillPatchCheckFill />,
 				title: "Mongodb",
 				subTitle: "Experienced",
 			},
 			{
-				icons: <TiTick />,
+				icons: <BsFillPatchCheckFill />,
 				title: "Nodejs",
 				subTitle: "Experienced",
 			},
 			{
-				icons: <TiTick />,
+				icons: <BsFillPatchCheckFill />,
 				title: "Express",
 				subTitle: "Experienced",
 			},
@@ -120,31 +123,31 @@ const Home = () => {
 	const serviceData = {
 		uiux: [
 			{
-				icons: <TiTick />,
+				icons: <BsCheck2Circle />,
 				des: "orem ipsum dolor sit amet, consectetur adipisicing elit. Itaque nam porro aliquid omnis ex dignissimos ex",
 			},
 			{
-				icons: <TiTick />,
+				icons: <BsCheck2Circle />,
 				des: "orem ipsum dolor sit amet, consectetur adipisicing elit. Itaque nam porro aliquid omnis ex dignissimos ex",
 			},
 		],
 		webDev: [
 			{
-				icons: <TiTick />,
+				icons: <BsCheck2Circle />,
 				des: "orem ipsum dolor sit amet, consectetur adipisicing elit. Itaque nam porro aliquid omnis ex dignissimos ex",
 			},
 			{
-				icons: <TiTick />,
+				icons: <BsCheck2Circle />,
 				des: "orem ipsum dolor sit amet, consectetur adipisicing elit. Itaque nam porro aliquid omnis ex dignissimos ex",
 			},
 		],
 		mislenious: [
 			{
-				icons: <TiTick />,
+				icons: <BsCheck2Circle />,
 				des: "orem ipsum dolor sit amet, consectetur adipisicing elit. Itaque nam porro aliquid omnis ex dignissimos ex",
 			},
 			{
-				icons: <TiTick />,
+				icons: <BsCheck2Circle />,
 				des: "orem ipsum dolor sit amet, consectetur adipisicing elit. Itaque nam porro aliquid omnis ex dignissimos ex",
 			},
 		],
@@ -571,7 +574,7 @@ const HomeWrapper = styled.div`
 					.card {
 						background: var(--bgColorVariant);
 						text-align: center;
-						padding: 2rem;
+						padding: 0.5rem 1.5rem;
 						border-radius: 1rem;
 						small {
 							color: var(--lightColor);
@@ -598,6 +601,7 @@ const HomeWrapper = styled.div`
 				background: var(--bgColorVariant);
 				padding: 2rem;
 				border-radius: 1rem;
+				transition: var(--transition);
 				h2 {
 					color: var(--primaryColor);
 					margin-bottom: 1rem;
@@ -607,11 +611,11 @@ const HomeWrapper = styled.div`
 					color: var(--lightColor);
 				}
 				span {
-					background: var(--primaryColor);
-					padding: 0.6rem;
-					border-radius: 50%;
-					font-size: 1rem;
-					display: flex;
+					color: var(--primaryColor);
+				}
+				&:hover {
+					background: var(--bgColor);
+					border: 1px solid var(--primaryColor);
 				}
 			}
 		}
@@ -647,8 +651,13 @@ const HomeWrapper = styled.div`
 				background: var(--bgColorVariant);
 				padding: 1rem;
 				border-radius: 1rem;
+				transition: var(--transition);
 				.card-body {
 					margin: 1rem 0;
+				}
+				&:hover {
+					background: var(--bgColor);
+					border: 1px solid var(--primaryColor);
 				}
 			}
 		}
@@ -666,7 +675,7 @@ const HomeWrapper = styled.div`
 				border-radius: 0.5rem;
 				transition: var(--transition);
 				&:hover {
-					background: transparent;
+					background: var(--bgColor);
 					border: 1px solid var(--primaryColor);
 				}
 				figure {
@@ -782,6 +791,9 @@ const HomeWrapper = styled.div`
 	/* ===================MEDIA QUERY(SMALL DEVICES)=================== */
 
 	@media screen and (max-width: 600px) {
+		.banner-wrapper {
+			height: 100vh;
+		}
 		.services-wrapper {
 			.card-container {
 				grid-template-columns: 1fr;
