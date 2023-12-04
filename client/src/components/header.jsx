@@ -69,6 +69,7 @@ const HeaderWrapper = styled.header`
 	bottom: 0;
 	left: 50%;
 	transform: translate(-50%, -50%);
+	z-index: 1000;
 	display: flex;
 	gap: 1rem;
 	background: rgba(0, 0, 0, 0.3);
