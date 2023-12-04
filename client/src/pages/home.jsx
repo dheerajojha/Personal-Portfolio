@@ -1,6 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable no-unused-vars */
-import React from "react";
+import { React, useRef } from "react";
 import styled from "styled-components";
 import Header from "../components/header";
 import Footer from "../components/footer";
@@ -22,7 +22,36 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-const home = () => {
+import emailjs from "emailjs-com";
+import { toast } from "react-toastify";
+
+const Home = () => {
+	// scroll to bottom function
+	const contactRef = useRef(null)
+	const scrollToBottom = () => {
+		contactRef.current?.scrollIntoView({ behavior: "smooth" })
+	}
+
+	// calling email handler
+	const formRef = useRef();
+	const formSubmitHandler = async (e) => {
+		e.preventDefault();
+		try {
+			const res = await emailjs.sendForm(
+				"service_dgkij6t",
+				"template_20psipq",
+				formRef.current,
+				"kqO6yOGLjwNQGVbFp"
+			);
+			if (res.text) {
+				toast.success("Email sent successfully");
+				e.target.reset();
+			}
+		} catch (error) {
+			toast.error(error.text);
+			console.log(error.text);
+		}
+	};
 	const aboutData = [
 		{
 			icons: <FaArrowTrendUp />,
@@ -168,11 +197,11 @@ const home = () => {
 	return (
 		<HomeWrapper>
 			{/* <----------------------header section start---------------------> */}
-			{/* <Header /> */}
+			<Header />
 			{/* <----------------------header section end---------------------> */}
 
 			{/* <----------------------banner section start---------------------> */}
-			<section className="banner-wrapper">
+			<section className="banner-wrapper" id="#">
 				<article>
 					<small>HELLO, i am</small>
 					<h1>Dheeraj Ojha</h1>
@@ -202,14 +231,14 @@ const home = () => {
 				</div>
 
 				<div className="scroll-down">
-					<small>SCROLL DOWN</small>
+					<small onClick={scrollToBottom}>SCROLL DOWN</small>
 				</div>
 			</section>
 
 			{/* <----------------------banner section end---------------------> */}
 
 			{/* <----------------------About section start---------------------> */}
-			<section className="about-wrapper">
+			<section className="about-wrapper" id="about">
 				<div className="heading">
 					<small>Get To Know</small>
 					<h1>About Me</h1>
@@ -247,7 +276,7 @@ const home = () => {
 			{/* <----------------------About section end---------------------> */}
 
 			{/* <----------------------Experience section start---------------------> */}
-			<section className="experience-wrapper">
+			<section className="experience-wrapper" id="experience">
 				<div className="heading">
 					<small>What skills I Have</small>
 					<h1>Experience</h1>
@@ -292,7 +321,7 @@ const home = () => {
 			{/* <----------------------Experience section end---------------------> */}
 
 			{/* <----------------------Services section start---------------------> */}
-			<section className="services-wrapper">
+			<section className="services-wrapper" id="services">
 				<div className="heading">
 					<small>What I Offer</small>
 					<h1>Services</h1>
@@ -350,7 +379,7 @@ const home = () => {
 			{/* <----------------------Services section end---------------------> */}
 
 			{/* <----------------------Portfolio section start---------------------> */}
-			<section className="portfolio-wrapper">
+			<section className="portfolio-wrapper" id="portfolio">
 				<div className="heading">
 					<small>My Recent Work</small>
 					<h1>Portfolio</h1>
@@ -377,7 +406,7 @@ const home = () => {
 			{/* <----------------------Portfolio section end---------------------> */}
 
 			{/* <----------------------Testiminial section start---------------------> */}
-			<section className="testimonial-wrapper">
+			<section className="testimonial-wrapper" id="testimonial">
 				<div className="heading">
 					<small>What Our Client Says</small>
 					<h1>Testimonial</h1>
@@ -403,7 +432,7 @@ const home = () => {
 			{/* <----------------------Testmonial section end---------------------> */}
 
 			{/* <----------------------Contact section start---------------------> */}
-			<section className="contact-wrapper">
+			<section className="contact-wrapper" id="contact" ref={contactRef}>
 				<div className="heading">
 					<small>Get In Touch</small>
 					<h1>Contact</h1>
@@ -431,15 +460,15 @@ const home = () => {
 						</div>
 					</div>
 					<div className="right">
-						<form action="">
+						<form ref={formRef} onSubmit={formSubmitHandler}>
 							<div className="form-group">
-								<input type="text" placeholder="Your Full Name" />
+								<input type="text" placeholder="Your Full Name" name="name" />
 							</div>
 							<div className="form-group">
-								<input type="email" placeholder="Your Email" />
+								<input type="email" placeholder="Your Email" name="email" />
 							</div>
 							<div className="form-group">
-								<textarea placeholder="Your Full Name" />
+								<textarea placeholder="Write your message here..." name="message" />
 							</div>
 
 							<div className="button-group">
@@ -684,6 +713,7 @@ const HomeWrapper = styled.div`
 						border: 1px solid var(--bgColorVariant);
 						padding: 1rem;
 						border-radius: 0.5rem;
+						color: var(--whiteColor);
 					}
 				}
 			}
@@ -766,4 +796,4 @@ const HomeWrapper = styled.div`
 	}
 `;
 
-export default home;
+export default Home;
